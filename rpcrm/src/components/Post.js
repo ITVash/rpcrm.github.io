@@ -10,22 +10,25 @@ export default class Post extends Component {
     const json = await res.json();
     this.setState({
       post: json.articles
-    });    
-    //return json.articles.map(article=> this.creatVer(article)).join('\n');
+    });
   }  
-  creatVer(article) {
-    return `
-    <a href=${article.url}>
-      <h1>${article.title}</h1>
-      <img src=${article.urlToImage} alt=${article.title}/>
-      <p>${article.description}</p>
-    </a>
-    `;
+  creatVer = (article) => {
+    return (
+      <div key={article.title}>
+        <a href={article.url} target="_blanc">
+          <h1>{article.title}</h1>
+          <img src={article.urlToImage} alt={article.title}/>
+          <p>{article.description}</p>
+        </a>
+      </div>
+    );
+  }
+  componentDidMount() {
+    this.newNews();
   }
   render() {
     const i = this.state.post;
-    console.log(`Method: ${i}`);
-    const items = this.state.post;
+    const items = i.map(this.creatVer);
     return(
       <div>
         {items}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const apiKey = "80ba6484ce8841618bee940b2f107937";
 export default class Post extends Component {
@@ -11,13 +11,13 @@ export default class Post extends Component {
     this.setState({
       post: json.articles
     });
-  }  
+  }
   creatVer = (article) => {
     return (
       <div key={article.title}>
         <a href={article.url} target="_blanc">
           <h1>{article.title}</h1>
-          <img src={article.urlToImage} alt={article.title}/>
+          <img src={article.urlToImage} alt={article.title} />
           <p>{article.description}</p>
         </a>
       </div>
@@ -29,7 +29,7 @@ export default class Post extends Component {
   render() {
     const i = this.state.post;
     const items = i.map(this.creatVer);
-    return(
+    return (
       <div>
         {items}
       </div>
